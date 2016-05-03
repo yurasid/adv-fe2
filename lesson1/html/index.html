@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Some app</title>
+  </head>
+  <body>
+    <div class="raw-json"></div>
+    <div class="table-json"></div>
+    <script id="raw-json-template" type="text/x-handlebars-template">
+      <div class="raw-json">
+      <pre>
+        {{json posts}}
+      </pre>
+      </div>
+    </script>
+    <script id=table-json-template type=text/x-handlebars-template>
+      {{#table posts}} 
+        {{description}}
+      {{/table}}
+    </script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/handlebars/handlebars.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/test.js"></script>
+
+  </body>
+</html>
