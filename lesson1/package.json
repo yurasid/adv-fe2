@@ -1,0 +1,24 @@
+{
+  "name": "lesson1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "xdg-open http://localhost:3000 && node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yurii Sydoriak", "license": "ISC",
+  "dependencies": {
+    "angular": "latest",
+    "backbone": "^1",
+    "bower": "latest",
+    "react": ">0.1.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "run-sequence": "^1.1.5"
+  }
+}

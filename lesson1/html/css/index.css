@@ -1,0 +1,10 @@
+.description-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.description {
+  padding: 20px;
+}
+.description:nth-child(odd) {
+  background: #cecece;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "adv-fe2",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Yurii Sydoriak <yura.sid@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/yurasid/adv-fe2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "backbone": "^1",
+    "underscore": "1.8.3",
+    "react": ">0.1.0",
+    "handlebars": "^4.0.5",
+    "jquery": "^2.2.3"
+  }
+}
