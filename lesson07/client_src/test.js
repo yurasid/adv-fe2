@@ -29,7 +29,42 @@ $(function() {
 
     //---------------------------------------------------------------------------
 
+    const posts_url = '/json-server/posts/';
+    const users_url = '/json-server/users/';
 
+    fetch(posts_url + '466')
+        .then(function (r) {
+            return r.json();
+        }).then(function (j) {
+            var texts = j.comments.map(function (e) {
+                return { text: e.text, id: e.user };
+            });
+            Promise.all(texts.map(function (e) {
+                return fetch(users_url + e.id).then(function (r) {
+                        return r.json();
+                    }).then(function (j) {
+                        return { name: j.name, id: j.id };
+                    }).catch(console.log);
+            })).then(function (users) {
+                return users.map(function (u) {
+                    return texts.reduce(function (r, t) {
+                        if (t.id === u.id) {
+                            r.name = u.name;
+                            r.text = t.text;
+                        }
+                        return r;
+                    }, {}); 
+                });
+            }).then(function (e) {
+                e.forEach(function (i) {
+                    $('.container__other')
+                        .append(i.name.toUpperCase() + ': ' +
+                                i.text.toLowerCase() + '; ');
+                });
+            }).catch(console.log);
+        }).catch(console.log);
+
+    /**
     fetch('/json-server/posts/466')
         .then( r => r.json() )
         .then( j => {
@@ -60,5 +95,5 @@ $(function() {
                 } );
         } )
         .catch( e => console.log( "ERRERERRROR " + e ) );
-
+        */
 });
