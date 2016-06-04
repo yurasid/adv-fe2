@@ -7,6 +7,8 @@ module.exports = function GodLoveInicator(options) {
         model: options.hate
     });
 
+    console.log('in GHI options = ', options);
+
     function render() {
         elem.html(App.templates['god-hate-indicator']({}));
 

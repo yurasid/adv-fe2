@@ -24,5 +24,5 @@ module.exports = function TuneControls(options) {
     return {
         render: render,
         elem: elem
-    }
+    };
 };

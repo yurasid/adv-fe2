@@ -24,7 +24,8 @@
         init: function() {
             console.log('init');
         }
-    }
+    };
+
     global.Model = Model;
     Model.subscribeAll = function(models, cb) {
         models.forEach(function(model) {
@@ -34,8 +35,9 @@
     Model.createModel = function(custom) {
        var child = function() {
            return Model.apply(this, arguments);
-       }
-       child.prototype = $.extend({}, Model.prototype, custom)
+       };
+
+       child.prototype = $.extend({}, Model.prototype, custom);
        return child;
     };
 

@@ -1,5 +1,8 @@
 // espects model wiht getCount method
 module.exports = function Bar(options) {
+
+    console.log('in ctB options = ', options);
+
     var elem = $('<div></div>');
 
     var model = options.model;

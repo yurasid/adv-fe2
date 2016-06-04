@@ -7,22 +7,28 @@ module.exports = function Game() {
 
     // create resources 
     // e.g {count: 10, name: gold}
+    var gold = new Resource({ name: 'gold', count: 10 });
+    var copper = new Resource({ name: 'copper', count: 30 });
+
+    var resources = [gold, copper];
 
     // create GodGiftForm 
     // {resources: resources}
-    
+    var giftForm = new GodGiftForm({ resources: resources });
+
     // create UserWealth 
     // {resources: resources}
+    var userWealth = new UserWealth({ resources: resources });
 
     function render() {
         elem.html(App.templates['game']({}));
-//         elem.find('.game__god-gift-form').html(giftForm.render().elem)
-//         elem.find('.game__wealth').html(userWealth.render().elem)
+        elem.find('.game__god-gift-form').html(giftForm.render().elem);
+        elem.find('.game__wealth').html(userWealth.render().elem);
         return this;
     }
 
     return {
         render: render,
         elem: elem
-    }
+    };
 };

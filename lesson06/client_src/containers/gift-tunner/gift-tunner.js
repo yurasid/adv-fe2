@@ -4,6 +4,8 @@ var TuneControls = require('components/tune-controls/tune-controls.js');
 module.exports = function GiftTunner(options) {
     var elem = $('<div></div>');
 
+    console.log('in GT options = ', options);
+
     var resource = options.resource;
 
     var bar = new Bar({

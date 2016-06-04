@@ -3,7 +3,12 @@ module.exports = function Resource(options) {
 
     var resource = options.resource;
 
+    console.log('in ctR options = ', options);
+
     // subscribe on resource
+    resource.subscribe(function () {
+        render();
+    });
 
     function render() {
         elem.html(App.templates['resource']({}));
@@ -16,5 +21,5 @@ module.exports = function Resource(options) {
     return {
         render: render,
         elem: elem
-    }
+    };
 };

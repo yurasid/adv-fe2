@@ -4,6 +4,9 @@ var Resource  = require('models/resource.js');
 var Hate = require('models/hate.js');
 
 module.exports = function GodGiftForm(options) {
+
+    console.log('in GGF option = ', options);
+
     var elem = $('<div></div>');
 
     var BASE_HATE = 50; // can be propogated from game
@@ -19,27 +22,34 @@ module.exports = function GodGiftForm(options) {
     var godPrefer = {
         'gold': 6,
         'copper': 2
-    }
+    };
 
     // create tuner resources (resource model) tuneResource
     // 
+    var tuneResourceGold = new Resource({ name: 'gold', count: godPrefer.gold });
+    var tuneResourceCopper = new Resource({ name: 'copper', count: godPrefer.copper });
+
+    var tunnerResources = [ tuneResourceGold, tuneResourceCopper ];
+
     // create gift components(gift-tuner) with tunerResouce 
     //
+    var tunnerResourceGold = new GiftTunner({ name: 'gold', resource: tuneResourceGold });
+    var tunnerResourceCopper = new GiftTunner({ name: 'copper', resource: tuneResourceCopper });
+    var tunners = [ tunnerResourceGold, tunnerResourceCopper ];
+
     // subscribe on tuner resouces 
     // onChange -> set changes in reseouce
-    //
 
     // subscribe on tunner resoures
     // onChange -> recalculate and set hate count
-    //
 
     function render() {
         elem.html(App.templates['god-gift-form']({}));
 
-//         elem.find('.god-gift-form__tunners').html(tunners.map(function(tunner) {
-//             return tunner.render().elem;
-//         }));
-//         elem.find('.god-gift-form__hate').html(godHateIndicator.render().elem);
+        elem.find('.god-gift-form__tunners').html(tunners.map(function(tunner) {
+            return tunner.render().elem;
+        }));
+        elem.find('.god-gift-form__hate').html(godHateIndicator.render().elem);
 
         subscribeHandlers(elem);
 
