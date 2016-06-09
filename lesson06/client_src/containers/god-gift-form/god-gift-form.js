@@ -39,9 +39,27 @@ module.exports = function GodGiftForm(options) {
 
     // subscribe on tuner resouces 
     // onChange -> set changes in reseouce
-
+    //
+    
     // subscribe on tunner resoures
     // onChange -> recalculate and set hate count
+    //
+
+    tuneResourceGold.subscribe(function () {
+        // 
+        // Calculate Hate
+        //
+        
+    });
+
+    tuneResourceCopper.subscribe(function () {
+        var deltaCopper = tuneResourceCopper.getCount() - godPrefer.copper;
+        var deltaHate = deltaCopper * 1;
+        var currentHate = hate.getCount();
+        hate.setCount(currentHate- deltaHate);
+    });
+
+
 
     function render() {
         elem.html(App.templates['god-gift-form']({}));
