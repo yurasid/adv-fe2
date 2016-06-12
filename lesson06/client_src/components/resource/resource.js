@@ -1,25 +1,25 @@
-module.exports = function Resource(options) {
-    var elem = $('<div></div>');
+module.exports = function Resource( options ) {
+  var elem = $( '<div></div>' );
 
-    var resource = options.resource;
+  var resource = options.resource;
 
-    console.log('in ctR options = ', options);
+  console.log( 'in ctR options = ', options );
 
     // subscribe on resource
-    resource.subscribe(function () {
-        render();
-    });
+  resource.subscribe( function() {
+    render();
+  } );
 
-    function render() {
-        elem.html(App.templates['resource']({}));
-        elem.find('.resource__name').html(resource.getName());
-        elem.find('.resource__val').html(resource.getCount());
+  function render() {
+    elem.html( App.templates[ 'resource' ]( {} ) );
+    elem.find( '.resource__name' ).html( resource.getName() );
+    elem.find( '.resource__val' ).html( resource.getCount() );
 
-        return this;
-    }
+    return this;
+  }
 
-    return {
-        render: render,
-        elem: elem
-    };
+  return {
+    render: render,
+    elem: elem
+  };
 };

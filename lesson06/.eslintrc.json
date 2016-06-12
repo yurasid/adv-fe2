@@ -1,20 +1,11 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "rules": {
-        "semi": 1
-    },
-    "env": {
-        "browser": true,
-        "node": true
-    },
+  "extends": "idiomatic",
     "globals": {
         "$": true,
-        "App": true
+        "App": true,
+        "module": true,
+        "require": true,
+        "Model": true
+
     }
 }

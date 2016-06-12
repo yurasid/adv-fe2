@@ -1,28 +1,28 @@
 // expects model whit inc, dec methods
 //
-module.exports = function TuneControls(options) {
-    var elem = $('<div></div>');
+module.exports = function TuneControls( options ) {
+  var elem = $( '<div></div>' );
 
-    var model = options.model;
+  var model = options.model;
 
-    function render() {
-        elem.html(App.templates['tune-controls']({}));
-        subscribeHandlers(elem);
+  function render() {
+    elem.html( App.templates[ 'tune-controls' ]( {} ) );
+    subscribeHandlers( elem );
 
-        return this;
-    }
+    return this;
+  }
 
-    function subscribeHandlers() {
-        elem.find('.tune-controls__inc').click(function() {
-            model.inc();
-        });
-        elem.find('.tune-controls__dec').click(function() {
-            model.dec();
-        });
-    }
+  function subscribeHandlers() {
+    elem.find( '.tune-controls__inc' ).click( function() {
+      model.inc();
+    } );
+    elem.find( '.tune-controls__dec' ).click( function() {
+      model.dec();
+    } );
+  }
 
-    return {
-        render: render,
-        elem: elem
-    };
+  return {
+    render: render,
+    elem: elem
+  };
 };

@@ -1,29 +1,29 @@
-var Resource = require('components/resource/resource.js');
+var Resource = require( 'components/resource/resource.js' );
 
-module.exports = function UserWealth(options) {
-    var elem = $('<div></div>');
+module.exports = function UserWealth( options ) {
+  var elem = $( '<div></div>' );
 
-    var resources = options.resources; 
+  var resources = options.resources;
 
-    console.log('in UW options = ', options);
+  console.log( 'in UW options = ', options );
 
-    // create resouce components 
+    // create resouce components
     // {resouce: resouce}
 
-    var ctResources = resources.map(function (r) {
-        return new Resource({ resource: r });
-    });
+  var ctResources = resources.map( function( r ) {
+    return new Resource( { resource: r } );
+  } );
 
-    function render() {
-        elem.html(App.templates['user-wealth']({}));
-        elem.find('.user-wealth__resources').html(ctResources.map(function(r) {
-            return r.render().elem;
-        }));
-        return this;
-    }
+  function render() {
+    elem.html( App.templates[ 'user-wealth' ]( {} ) );
+    elem.find( '.user-wealth__resources' ).html( ctResources.map( function( r ) {
+      return r.render().elem;
+    } ) );
+    return this;
+  }
 
-    return {
-        render: render,
-        elem: elem
-    };
+  return {
+    render: render,
+    elem: elem
+  };
 };
