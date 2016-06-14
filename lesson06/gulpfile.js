@@ -11,7 +11,7 @@ var wrap = require( 'gulp-wrap' );
 var declare = require( 'gulp-declare' );
 var runSequence = require('run-sequence');
 var browserify = require( 'gulp-browserify' );
-var ctCreator = require( 'ct-creator' );
+// var ctCreator = require( 'ct-creator' );
 var browserSync = require('browser-sync').create();
 
 var DEST_DIR = 'client_build';

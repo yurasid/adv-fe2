@@ -1,3 +1,6 @@
 var Game = require( 'containers/game/game.js' );
 
-$( '.content' ).html( new Game().render().elem );
+var g = new Game();
+
+console.log( g.render().elem ); 
+$( '.content' ).html( g.render().elem );
