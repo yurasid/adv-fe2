@@ -1,11 +1,14 @@
 {
   "extends": "idiomatic",
-    "globals": {
-        "$": true,
-        "App": true,
-        "module": true,
-        "require": true,
-        "Model": true
-
-    }
+  "globals": {
+    "$": true,
+    "App": true,
+    "module": true,
+    "require": true,
+    "Model": true,
+    "fetch":true
+  },
+  "rules": {
+    "no-console": false
+  }
 }
