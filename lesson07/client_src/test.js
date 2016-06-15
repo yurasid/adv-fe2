@@ -34,7 +34,7 @@ $( function() {
   sumOfLikes().then( function( res ) {
     $( '.container__likes' ).html( 'count of likes - ' + res );
   } ).catch( function( e ) {
-    console.log( 'Error in sumOfLikes call' );
+    console.log( 'Error in sumOfLikes call', e );
   } );
 
     //---------------------------------------------------------------------------
@@ -69,7 +69,7 @@ $( function() {
       .then( function( j ) {
         return { id: j.id, name: j.name };
       } ).catch( function( e ) {
-        console.log( 'Error in getUser()' + e );
+        console.log( 'Error in getUser()', e );
       } );
   }
 

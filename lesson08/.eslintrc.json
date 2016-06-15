@@ -1,0 +1,22 @@
+{
+  "extends": "idiomatic",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "eslint-env": "node",
+  "globals": {
+    "require": true,
+    "console": true,
+    "Promise": true,
+    "__dirname": true
+  },
+  "rules": {
+    "no-console": [
+      "error",
+      { "allow": [ "log", "warn", "error" ] }
+    ],
+    "prefer-const": [
+      "error", { "destructuring": "any", "ignoreReadBeforeAssign": false }
+    ]
+  }
+}
