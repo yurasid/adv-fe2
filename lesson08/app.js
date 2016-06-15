@@ -38,19 +38,18 @@ app.get( '/api/' + apiVersion + '/*', ( req, res ) => {
 } );
 
 app.delete( '/api/' + apiVersion + '/*', ( req, res ) => {
-  const status = deleteResponse( req );
-  status.then( st => {
-    const responseCode = st.status === 'success' ? 200 : 404;
-    sendMsg( st, responseCode, res );
-  } ).catch( err => {
-    console.log( err );
-  } );
+  deleteResponse( req )
+    .then( st => {
+      const responseCode = st.status === 'success' ? 200 : 404;
+      sendMsg( st, responseCode, res );
+    } )
+    .catch( err => console.log( err ) );
 } );
 
 app.post( '/api/' + apiVersion + '/*', ( req, res ) => {
   postResponse( req )
-  .then( err => sendMsg( err, 409, res ) )
-  .catch( ok => sendMsg( ok, 200, res ) );
+    .then( ok => sendMsg( ok, 200, res ) )
+    .catch( err => sendMsg( err, 409, res ) );
 } );
 
 
@@ -79,16 +78,16 @@ function postResponse( req ) {
             fs.writeFile( absDirPath + '/get.json', bodyJson, 'utf8', ( err ) => {
               if ( err ) {
                 console.log( 'Can\'t write file', err );
-                reject( { status: 'fail' } );
+                reject({ status: 'fail' });
               } else {
                 console.log('ok:created');
-                resolve( { status: 'success' } );
+                resolve({ status: 'success' });
               }
             } );
           }
         } );
       } else {
-        console.log( 'fail:exist' );
+        console.log('fail:exist');
         reject({ status: 'fail' });
       }
     } );
@@ -147,14 +146,14 @@ function deleteResponse( req ) {
 
 function answer( req, res ) {
   getResponse( req ).then( data => {
-    if ( data.length ) {
-      res.status( 200 )
+    if ( !!data ) {
+      res.status(200)
          .json( data )
          .end();
     }
   } ).catch( e => {
     console.error( 'Error in app.get():\n ', e );
-    res.status( 404 )
+    res.status(404)
         .json( [
           {
             'info': {
