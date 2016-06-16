@@ -2,6 +2,7 @@ var GodGiftForm = require( 'containers/god-gift-form/god-gift-form.js' );
 var UserWealth = require( 'containers/user-wealth/user-wealth.js' );
 var Resource = require( 'models/resource.js' );
 
+module.exports = function Game() {
   var elem = $( '<div></div>' );
 
   // create resources

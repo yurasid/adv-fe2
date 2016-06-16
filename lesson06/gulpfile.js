@@ -9,17 +9,18 @@ var handlebars = require('gulp-handlebars');
 var wrap = require('gulp-wrap');
 var declare = require('gulp-declare');
 var runSequence = require('run-sequence');
-<<<<<<< HEAD
 var browserify = require( 'gulp-browserify' );
 var ctCreator = require( 'ct-creator' );
 var browserSync = require('browser-sync').create();
 var browserify = require('gulp-browserify');
+//var ctCreator = require('ct-creator');
+// var eslint = require( 'gulp-eslint' );
+var browserSync = require('browser-sync').create();
 
 var DEST_DIR = 'client_build';
 var DEST_LIBS_DIR = DEST_DIR + '/libs';
 var CLIENT_DIR = 'client_src';
 
-<<<<<<< HEAD
 gulp.task('browserSync', function (cb) {
     browserSync.init({
         server: {
@@ -84,6 +85,26 @@ gulp.task('templates', () => {
         .pipe(gulp.dest(DEST_DIR));
 });
 
+gulp.task('clean-build', () => {
+  return gulp.src(DEST_DIR + '/*', { read: false })
+        .pipe(clean({ force: true }));
+});
+
+gulp.task('watch', ['b-sync'], () => {
+  gulp.watch(CLIENT_DIR + '/**/*.@(html|js|css|hbs)', ['build-and-reload']);
+});
+
+gulp.task('b-sync', () => {
+  return browserSync.init({
+    server: {
+      baseDir: DEST_DIR,
+    },
+  });
+});
+
+gulp.task('build-and-reload', ['build'], () => {
+  browserSync.reload();
+  return gulp.src(DEST_DIR + '/**');
 gulp.task('clean-build', () => {
   return gulp.src(DEST_DIR + '/*', { read: false })
         .pipe(clean({ force: true }));
