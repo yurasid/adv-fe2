@@ -13,10 +13,17 @@ module.exports = function TuneControls( options ) {
   }
 
   function subscribeHandlers() {
+<<<<<<< HEAD
+    elem.find( '.tune-controls__inc' ).click( function() {
+      model.inc();
+    } );
+    elem.find( '.tune-controls__dec' ).click( function() {
+=======
     elem.find( '.tune-controls__inc' ).click( function () {
       model.inc();
     } );
     elem.find( '.tune-controls__dec' ).click( function () {
+>>>>>>> master
       model.dec();
     } );
   }

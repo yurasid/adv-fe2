@@ -1,4 +1,18 @@
 {
+<<<<<<< HEAD
+  "extends": "idiomatic",
+  "globals": {
+    "$": true,
+    "App": true,
+    "module": true,
+    "require": true,
+    "Model": true,
+    "fetch":true
+  },
+  "rules": {
+    "no-console": false
+  }
+=======
     "extends": "idiomatic",
     "parserOptions": {
         "ecmaVersion": 6,
@@ -27,4 +41,5 @@
         "$": true,
         "App": true
     }
+>>>>>>> master
 }
