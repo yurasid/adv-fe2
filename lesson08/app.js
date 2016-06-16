@@ -1,20 +1,20 @@
-const express = require( 'express' )
-  , bodyParser = require( 'body-parser' )
-  , path = require( 'path' )
-  , fs = require( 'fs' )
-  , rmdir = require( 'rmdir' )
-  , promisify = require( 'promisify-node' )
-  , fsProm = promisify( 'fs' )
-  , url = require( 'url' )
-  , apiVersion = require( './package' ).version
-  , app = express()
-  ;
+const
+  express = require( 'express' ),
+  bodyParser = require( 'body-parser' ),
+  path = require( 'path' ),
+  fs = require( 'fs' ),
+  rmdir = require( 'rmdir' ),
+  // promisify = require( 'promisify-node' ),
+  // fsProm = promisify( 'fs' ),
+  url = require( 'url' ),
+  apiVersion = require( './package' ).version,
+  app = express();
 
 app.set( 'port', 5000 );
 
 // configure Express to work with post requests and get access
 // to response body
-app.use( bodyParser.urlencoded({ extended: false }));
+app.use( bodyParser.urlencoded({ extended: false }) );
 app.use( bodyParser.json() );
 
 app.listen( app.get( 'port' ), () => {
@@ -52,11 +52,53 @@ app.post( '/api/' + apiVersion + '/*', ( req, res ) => {
     .catch( err => sendMsg( err, 409, res ) );
 } );
 
+app.patch( '/api/' + apiVersion + '/*', ( req, res ) => {
+  patchResponse( req )
+  .then( ok => sendMsg( ok, 200, res ) )
+  .catch( err => sendMsg( err, 404, res ) );
+} );
+
+/**
+ * Return status message to PATCH request
+ *
+ * If entity successfully modified  -> 200 OK { status: 'success' }
+ * If same entity found         -> 404 Not Found { status: 'fail' }
+ *
+ * @name postResponse
+ * @param {Object} req - Express Response Object
+ * @return {Promise}
+ */
+function patchResponse( req ) {
+  return new Promise( ( resolve, reject ) => {
+    const
+      absDirPath = path.join( __dirname, getPathName( req ) ),
+      bodyJson = JSON.stringify( req.body, null, 4 );
+
+    fs.stat( absDirPath, ( err ) => {
+      if ( err ) {
+        // if directory not exist -> rejected
+        console.log('fail:exist');
+        console.log( 'error', err );
+        reject({ status: 'fail' });
+      } else {
+        fs.writeFile( absDirPath + '/get.json', bodyJson, 'utf8', ( err ) => {
+          if ( err ) {
+            console.log( 'Can\'t write file', err );
+            reject({ status: 'fail' });
+          } else {
+            console.log('ok:patched');
+            resolve({ status: 'success'});
+          }
+        } );
+      }
+    } );
+  } );
+}
 
 /**
  * Return status message to POST request
  *
- * If entity successful creted  -> 200 OK { status: 'success' }
+ * If entity successfuly creted  -> 200 OK { status: 'success' }
  * If same entity found         -> 409 Conflict { status: 'fail' }
  *
  * @name postResponse
@@ -68,9 +110,9 @@ function postResponse( req ) {
     const absDirPath = path.join( __dirname, getPathName( req ) ),
       bodyJson = JSON.stringify( req.body, null, 4 );
 
-    fs.stat( absDirPath, ( err, statObj ) => {
+    fs.stat( absDirPath, err => {
       if ( err ) {
-        fs.mkdir( absDirPath, ( err, msg ) => {
+        fs.mkdir( absDirPath, err => {
           if ( err ) {
             console.log( 'Can\'t create directory', err );
             reject({ status: 'fail' });
@@ -146,7 +188,7 @@ function deleteResponse( req ) {
 
 function answer( req, res ) {
   getResponse( req ).then( data => {
-    if ( !!data ) {
+    if ( data ) {
       res.status(200)
          .json( data )
          .end();
