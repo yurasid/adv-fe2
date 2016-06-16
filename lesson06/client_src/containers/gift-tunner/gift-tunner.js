@@ -1,35 +1,39 @@
-var Bar = require('components/bar/bar.js');
-var TuneControls = require('components/tune-controls/tune-controls.js');
+var Bar = require( 'components/bar/bar.js' );
+var TuneControls = require( 'components/tune-controls/tune-controls.js' );
 
-module.exports = function GiftTunner(options) {
-    var elem = $('<div></div>');
+module.exports = function GiftTunner( options ) {
+  var elem = $( '<div></div>' );
 
+<<<<<<< HEAD
     console.log('in GT options = ', options);
 
     var resource = options.resource;
+=======
+  var resource = options.resource;
+>>>>>>> 434869a3a12768e7f63befcc375cd48d24191f95
 
-    var bar = new Bar({
-        model: resource
-    });
-    var controls = new TuneControls({
-        model: resource
-    });
- 
-    function render() {
-        elem.html(App.templates['gift-tunner']({}));
+  var bar = new Bar( {
+    model: resource
+  } );
+  var controls = new TuneControls( {
+    model: resource
+  } );
 
-        elem.find('.gift-tunner__name').html(options.name);
-        elem.find('.gift-tunner__bar').html(bar.render().elem);
-        elem.find('.gift-tunner__controls').html(controls.render().elem);
+  function render() {
+    elem.html( App.templates[ 'gift-tunner' ]( {} ) );
 
-        return this;
-    }
+    elem.find( '.gift-tunner__name' ).html( options.name );
+    elem.find( '.gift-tunner__bar' ).html( bar.render().elem );
+    elem.find( '.gift-tunner__controls' ).html( controls.render().elem );
 
-    return {
-        render: render,
-        getCount: function() {
-            return bar.getCount();
-        },
-        elem: elem
-    }
+    return this;
+  }
+
+  return {
+    render: render,
+    getCount: function () {
+      return bar.getCount();
+    },
+    elem: elem
+  };
 };
