@@ -5,9 +5,6 @@
 .description {
   padding: 20px;
 }
-.description_odd {
+.description:nth-child(odd) {
   background: #cecece;
-}
-.description_even {
-    background: #fff;
 }

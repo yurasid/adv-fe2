@@ -24,14 +24,9 @@ var $rawJsonDomContainer = $('.raw-json'),
     //         style += ':"';
     //         return '<div class="description"' + style + '>' + options.fn( ctx[i] ) + '</div>';
     //     } ).join('\n') + '</div>';
-
     return new Handlebars.SafeString( ctx.reduce( function( resultString, element, i ) {
-        var tableModifier = i % 2 ? 'even' : 'odd';
-
-        return resultString + '<div class="description description_' + tableModifier +'">' + options.fn( ctx[i] ) + '</div>';
-
+      return resultString + '<div class="description">' + options.fn( ctx[i] ) + '</div>';
     }, '<div class="description-container">') + '</div>');
-
   } );
 
   // add changes to the DOM
