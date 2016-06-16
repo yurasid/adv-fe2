@@ -1,9 +1,9 @@
-(function (global) {
-    function Model() {
-       this.attributes = {};    
-       this.subscribers = [];
-       this.init.apply(this, arguments);
-    }
+( function ( global ) {
+  function Model() {
+    this.attributes = {};
+    this.subscribers = [];
+    this.init.apply( this, arguments );
+  }
 
     Model.prototype = {
         subscribe: function(cb) {
@@ -40,5 +40,8 @@
        child.prototype = $.extend({}, Model.prototype, custom);
        return child;
     };
+    child.prototype = $.extend( {}, Model.prototype, custom );
+    return child;
+  };
 
-})(window);
+} )( window );

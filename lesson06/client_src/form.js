@@ -1,3 +1,4 @@
-var Game = require('containers/game/game.js');
+var Game = require( 'containers/game/game.js' );
 
-$('.content').html(new Game().render().elem);
+$( '.content' ).html( new Game().render().elem );
+
