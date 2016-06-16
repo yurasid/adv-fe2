@@ -11,7 +11,7 @@
     "json-server": "^0.8.8"
   },
   "devDependencies": {
-    "browser-sync": "^2.12.10",
+    "browser-sync": "^2.13.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-bower": "^0.0.13",
@@ -21,6 +21,7 @@
     "gulp-csscomb": "^3.0.6",
     "gulp-cssnano": "^2.1.1",
     "gulp-declare": "^0.3.0",
+    "gulp-eslint": "^2.0.0",
     "gulp-handlebars": "^4.0.0",
     "gulp-if": "^1.2.5",
     "gulp-less": "^3.0.5",
