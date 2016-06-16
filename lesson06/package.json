@@ -10,11 +10,7 @@
     "express": "^4.13.4"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "browser-sync": "^2.12.10",
-=======
     "browser-sync": "^2.13.0",
->>>>>>> 434869a3a12768e7f63befcc375cd48d24191f95
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-bower": "^0.0.13",

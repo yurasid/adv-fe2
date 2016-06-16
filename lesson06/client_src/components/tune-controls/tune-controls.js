@@ -21,15 +21,8 @@ module.exports = function TuneControls( options ) {
     } );
   }
 
-<<<<<<< HEAD
-    return {
-        render: render,
-        elem: elem
-    };
-=======
   return {
     render: render,
     elem: elem
   };
->>>>>>> 434869a3a12768e7f63befcc375cd48d24191f95
 };
